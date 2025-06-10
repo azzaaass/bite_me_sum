@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bite Me Sum - Homemade Dim Sum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 0.6s ease-in-out",
+              "slide-up": "slideUp 0.8s ease-out",
+              "bounce-gentle": "bounceGentle 2s infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounceGentle {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .hero-gradient {
+        background: linear-gradient(135deg, #21569b 0%, #1b4987 100%);
+      }
+
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+
+      .smooth-scroll {
+        scroll-behavior: smooth;
+      }
+
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+    </style>
+  </head>
+  <body class="font-sans smooth-scroll">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full glass-effect shadow-sm z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-2">
+            <img
+              src="/images/LOGO BITE ME SUM.png"
+              class="h-20 p-2"
+              alt="logo"
+            />
+            <span class="text-2xl font-bold text-gray-900">Bite Me Sum</span>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-red-600 transition-colors duration-200"
+              >Home</a
+            >
+            <a
+              href="#menu"
+              class="text-gray-700 hover:text-red-600 transition-colors duration-200"
+              >Menu</a
+            >
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-red-600 transition-colors duration-200"
+              >About</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-red-600 transition-colors duration-200"
+              >Contact</a
+            >
+            <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+              <button
+                class="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-all duration-200 transform hover:scale-105"
+              >
+                Order Now
+              </button>
+            </a>
+          </div>
+
+          <button class="md:hidden" id="mobile-menu-btn">
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              id="menu-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              class="h-6 w-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              id="close-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-white border-t hidden" id="mobile-menu">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a
+              href="#home"
+              class="block px-3 py-2 text-gray-700 hover:text-red-600 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#menu"
+              class="block px-3 py-2 text-gray-700 hover:text-red-600 transition-colors"
+              >Menu</a
+            >
+            <a
+              href="#about"
+              class="block px-3 py-2 text-gray-700 hover:text-red-600 transition-colors"
+              >About</a
+            >
+            <a
+              href="#contact"
+              class="block px-3 py-2 text-gray-700 hover:text-red-600 transition-colors"
+              >Contact</a
+            >
+            <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+              <button
+                class="w-full bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors mt-4"
+              >
+                Order Now
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="pt-16 hero-gradient min-h-screen flex items-center"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="animate-fade-in">
+            <h1
+              class="text-5xl lg:text-6xl font-bold text-gray-100 mb-6 leading-tight"
+            >
+              Authentic
+              <span class="text-gray-100 block">Homemade</span>
+              Dimsum
+            </h1>
+            <p class="text-xl text-gray-100 mb-8 leading-relaxed">
+              Crafted with premium ingredients, our high-quality dim sum
+              delivers a uniquely special taste in every bite.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Order Now
+                </button>
+              </a>
+              <a href="#about">
+                <button
+                  class="border-2 border-gray-100 text-gray-100 px-8 py-4 rounded-full text-lg font-bold hover:border-red-600 hover:bg-red-600 hover:text-white transition-all"
+                >
+                  About Us
+                </button>
+              </a>
+            </div>
+            <div class="flex items-center gap-8 mt-8">
+              <div class="flex items-center gap-2">
+                <svg
+                  class="h-5 w-5 text-red-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span class="text-gray-100">Fresh Daily</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg
+                  class="h-5 w-5 text-red-600"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  />
+                </svg>
+                <span class="text-gray-100">Made with Love</span>
+              </div>
+            </div>
+          </div>
+          <div class="relative animate-slide-up">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-red-200 to-yellow-200 rounded-3xl transform rotate-6 opacity-20"
+            ></div>
+            <img
+              src="/images/Udang Keju(2).jpg"
+              alt="Delicious dim sum"
+              class="relative rounded-3xl shadow-2xl w-full h-96 object-cover"
+            />
+            <a href="#testimonials">
+              <div
+                class="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl animate-bounce-gentle"
+              >
+                <div class="flex items-center gap-2">
+                  <div class="flex text-yellow-400">
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-700"
+                    >+20 Ulasan</span
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="menu" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Bite Me Sum Favorites
+          </h2>
+          <p class="text-xl text-gray-600">
+            Best-loved bites our customers can’t get enough of
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- product -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group card-hover"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/Dimsum Mentai.jpg"
+                alt="Dimsum Mentai"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Rp30k
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Dimsum Mentai
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Savory dimsum topped with rich, creamy mentai sauce for a bold,
+                premium bite.
+              </p>
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors font-semibold"
+                >
+                  Order Now
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- end product -->
+          <!-- product -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group card-hover"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/Udang Keju(1).jpg"
+                alt="Classic Pork Siu Mai"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Rp20k
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Golden Cheese Shrimp
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Juicy shrimp wrapped in a crispy layer and filled with melted
+                golden cheese—rich, creamy, and irresistibly crunchy.
+              </p>
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors font-semibold"
+                >
+                  Order Now
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- end product -->
+          <!-- product -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group card-hover"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/Wonton Chili Oil(2).jpg"
+                alt="Wonton Chili Oil"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Rp25k
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Wonton Chili Oil
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Soft wontons drenched in fragrant, spicy chili oil—bold, savory,
+                and packed with flavor.
+              </p>
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors font-semibold"
+                >
+                  Order Now
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- end product -->
+          <!-- product -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group card-hover"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/Frozen Udang Keju dan Rambutan.jpg"
+                alt="Frozen Chicken Siomay"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Rp35k
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Frozen Chicken Siomay
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Delicious chicken siomay made from premium ingredients, frozen
+                fresh to lock in flavor. Juicy, tender, and ready in minutes.
+              </p>
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors font-semibold"
+                >
+                  Order Now
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- end product -->
+          <!-- product -->
+          <div
+            class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group card-hover"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/Frozen Udang Keju dan Rambutan.jpg"
+                alt="Frozen Golden Cheese Shrimp"
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div
+                class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Rp35k
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Frozen Golden Cheese Shrimp
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Crispy golden shrimp filled with melted cheese, frozen to lock
+                in freshness and flavor. Just fry and enjoy the cheesy crunch!
+              </p>
+              <a href="https://www.instagram.com/bitemesum.id?igsh=aHRzODF3YmMxZXQw" target="_blank">
+                <button
+                  class="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors font-semibold"
+                >
+                  Order Now
+                </button>
+              </a>
+            </div>
+          </div>
+          <!-- end product -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <img
+              src="/images/Wonton Chili Oil.jpg"
+              alt="Chef preparing dim sum"
+              class="rounded-2xl shadow-xl w-full h-96 object-cover"
+            />
+          </div>
+          <div>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">
+              Sum-thing Delicious in Every Bite
+            </h2>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+              Bite Me Sum is a home-based brand serving premium, handmade dim
+              sum that's simple, satisfying, and made with love. We craft every
+              piece in small batches using fresh, trusted ingredients.
+            </p>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+              <strong>Vision:</strong> Bringing convenience and indulgence
+              together with premium, ready-to-eat, and frozen meals that make
+              every bite enjoyable.
+            </p>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+              <strong>Mission:</strong> To provide high-quality frozen foods
+              that make mealtime effortless and flavorful—without ever
+              compromising on taste.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            What Our Customers Say
+          </h2>
+          <p class="text-xl text-gray-600">Don't just take our word for it</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow card-hover"
+          >
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6 italic">
+              "Rill Enak banget! Aku ngestock punya kalian di freezer."
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow card-hover"
+          >
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6 italic">
+              "Udangnya kerasa bangett. Garing diluar lembut di dalam. Rasanya pas enakk."
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow card-hover"
+          >
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+                <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6 italic">
+              "Kejunya enakk, creamy dan banyak banget, ga pelit. Kalau dipanasin bisa leleh gitu, enak banget."
+            </p>
+          </div>    
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div>
+            <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
+            <p class="text-xl text-gray-300 mb-8">
+              Ready to order? Have questions? We'd love to hear from you!
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <svg
+                  class="h-6 w-6 text-red-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                <a href="https://wa.me/6281359378655" target="_blank">
+                  <span class="text-lg">081359378655</span>
+                </a>
+              </div>
+              <div class="flex items-center space-x-4">
+                <svg
+                  class="h-6 w-6 text-red-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <span class="text-lg">bitemesum.id@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <!-- <h3 class="text-2xl font-semibold mb-4">Opening Hours</h3>
+              <div class="space-y-2 text-gray-300">
+                <div class="flex justify-between">
+                  <span>Monday - Friday</span>
+                  <span>11:00 AM - 9:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Saturday - Sunday</span>
+                  <span>10:00 AM - 10:00 PM</span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="bg-gray-800 rounded-2xl p-8 w-fit h-fit">
+            <h3 class="text-2xl font-semibold mb-6">Place Your Order</h3>
+            <img src="/images/barcode_pesanan.png" alt="barcode" class="w-48" />
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-16 pt-8 text-center">
+          <div class="flex items-center justify-center space-x-2 mb-4 ">
+            <img src="/images/LOGO BITE ME SUM.png" alt="logo" class="w-24 bg-white px-4 py-2 rounded-lg">
+            <span class="text-2xl font-bold">Bite Me Sum</span>
+          </div>
+          <p class="text-gray-400">
+            © 2024 Bite Me Sum. All rights reserved. Made with ❤️ for dim sum
+            lovers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      const closeIcon = document.getElementById("close-icon");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            mobileMenu.classList.add("hidden");
+            menuIcon.classList.remove("hidden");
+            closeIcon.classList.add("hidden");
+          }
+        });
+      });
+
+      // Navbar background change on scroll
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("bg-white/95");
+          navbar.classList.remove("bg-white/90");
+        } else {
+          navbar.classList.add("bg-white/90");
+          navbar.classList.remove("bg-white/95");
+        }
+      });
+
+      // Form submission
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.querySelectorAll(".card-hover").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
